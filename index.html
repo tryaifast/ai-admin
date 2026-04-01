@@ -128,7 +128,7 @@ tr:hover td{background:#fafafa}
       <div class="box">
         <h3>⏳ 待审核申请</h3>
         <div style="overflow-x:auto">
-        <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>简历摘要</th><th>操作</th></tr></thead>
+        <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>设备ID</th><th>简历摘要</th><th>操作</th></tr></thead>
         <tbody id="tb-pending"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
         </div>
       </div>
@@ -290,7 +290,7 @@ function render(){
       <td style="white-space:nowrap">${fmt(a.timestamp)}</td>
       <td>${a.companyName}</td><td>${a.contactName}</td><td>${a.useCase}</td>
       <td style="max-width:140px;font-size:12px;color:#888">${a.resume?(a.resume.length>30?a.resume.substr(0,30)+'...':a.resume):'<span style="color:#ccc">无</span>'}</td>
-      <td><button class="btn btn-blue" onclick="openReview('${a.id}')">审核</button></td>
+      <td style="font-size:11px;color:#999;max-width:80px;overflow:hidden;text-overflow:ellipsis">${a.deviceId?a.deviceId.substr(0,12):"-"}</td><td><button class="btn btn-blue" onclick="openReview('${a.id}')">审核</button></td>
     </tr>`).join('');
 
   // 已通过
@@ -367,7 +367,7 @@ function openReview(id){
     <div class="info-row"><div class="k">调用量</div><div class="v">${a.callVolume}/天</div></div>
     ${a.resume?`<div class="info-row"><div class="k">简历</div><div class="v" style="white-space:pre-wrap;max-height:150px;overflow-y:auto">${a.resume}</div></div>`:''}
     ${a.description?`<div class="info-row"><div class="k">描述</div><div class="v">${a.description}</div></div>`:''}
-    <div class="info-row"><div class="k">申请时间</div><div class="v">${fmt(a.timestamp)}</div></div>`;
+    <div class="info-row"><div class="k">设备ID</div><div class="v"><code style="font-size:11px">${a.deviceId||'无'}</code></div></div><div class="info-row"><div class="k">申请时间</div><div class="v">${fmt(a.timestamp)}</div></div>`;
   document.getElementById('reject-reason').value='';
   document.getElementById('modal-review').classList.add('open');
 }
