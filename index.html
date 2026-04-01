@@ -8,67 +8,89 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f2f5;display:flex;min-height:100vh}
 .sidebar{width:200px;background:#001529;color:#fff;position:fixed;height:100vh;overflow-y:auto;flex-shrink:0}
-.logo{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:16px;font-weight:700}
-.logo small{display:block;font-size:11px;opacity:.5;margin-top:2px}
-.nav-item{padding:13px 20px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:14px;border-left:3px solid transparent;transition:.2s}
+.logo{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px;font-weight:700;line-height:1.4}
+.logo small{display:block;font-size:11px;opacity:.45}
+.nav{padding:8px 0}
+.nav-item{padding:11px 20px;cursor:pointer;display:flex;align-items:center;gap:9px;font-size:13px;border-left:3px solid transparent;transition:.2s}
 .nav-item:hover{background:rgba(255,255,255,.08)}
-.nav-item.active{background:rgba(24,144,255,.2);border-left-color:#1890ff;color:#1890ff}
-.content{margin-left:200px;flex:1;padding:20px}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.nav-item.active{background:rgba(24,144,255,.18);border-left-color:#1890ff;color:#69c0ff}
+.content{margin-left:200px;flex:1;padding:20px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
 .topbar h2{font-size:20px;color:#333}
 .page{display:none}
 .page.show{display:block}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:20px}
-.card{background:#fff;border-radius:8px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08);text-align:center}
-.card .num{font-size:36px;font-weight:700;margin-bottom:4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:20px}
+.card{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.07);text-align:center}
+.card .num{font-size:34px;font-weight:700;margin-bottom:3px}
 .card .lbl{font-size:13px;color:#888}
 .card.c1 .num{color:#fa8c16}
 .card.c2 .num{color:#52c41a}
 .card.c3 .num{color:#ff4d4f}
 .card.c4 .num{color:#1890ff}
-.box{background:#fff;border-radius:8px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:16px}
-.box h3{font-size:15px;margin-bottom:16px;color:#333}
-table{width:100%;border-collapse:collapse}
-th,td{padding:11px 12px;text-align:left;border-bottom:1px solid #f0f0f0;font-size:13px}
-th{background:#fafafa;color:#666;font-weight:600}
+.box{background:#fff;border-radius:8px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:16px}
+.box h3{font-size:15px;margin-bottom:14px;color:#333;display:flex;align-items:center;gap:6px}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0;font-size:13px;word-break:break-all}
+th{background:#fafafa;color:#666;font-weight:600;white-space:nowrap}
 tr:last-child td{border-bottom:none}
-.tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px}
+tr:hover td{background:#fafafa}
+.tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px;white-space:nowrap}
 .tag.pending{background:#fff7e6;color:#fa8c16}
 .tag.approved{background:#f6ffed;color:#52c41a}
 .tag.rejected{background:#fff1f0;color:#ff4d4f}
-.btn{padding:6px 14px;border:none;border-radius:5px;cursor:pointer;font-size:13px;transition:.15s}
+.tag.active{background:#e6f7ff;color:#1890ff}
+.tag.inactive{background:#f5f5f5;color:#999}
+.btn{padding:5px 12px;border:none;border-radius:5px;cursor:pointer;font-size:12px;transition:.15s;white-space:nowrap}
 .btn:active{opacity:.8}
 .btn-blue{background:#1890ff;color:#fff}
 .btn-green{background:#52c41a;color:#fff}
 .btn-red{background:#ff4d4f;color:#fff}
-.btn-gray{background:#f0f0f0;color:#333;border:1px solid #d9d9d9}
+.btn-orange{background:#fa8c16;color:#fff}
+.btn-gray{background:#f5f5f5;color:#333;border:1px solid #d9d9d9}
 .btn-blue:hover{background:#40a9ff}
 .btn-green:hover{background:#73d13d}
 .btn-red:hover{background:#ff7875}
+.btn-orange:hover{background:#ffc53d}
+.btn-gray:hover{background:#e0e0e0}
 .empty{text-align:center;padding:40px;color:#bbb;font-size:14px}
 .loading{text-align:center;padding:30px;color:#999;font-size:14px}
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;align-items:center;justify-content:center}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:10px;padding:24px;width:90%;max-width:480px}
+.modal{background:#fff;border-radius:10px;padding:24px;width:90%;max-width:560px;max-height:85vh;overflow-y:auto}
 .modal h3{font-size:17px;margin-bottom:16px}
-.modal p{font-size:14px;color:#555;margin-bottom:8px;line-height:1.6}
-.modal-btns{margin-top:20px;display:flex;gap:10px}
-.toast{position:fixed;top:20px;right:20px;padding:11px 20px;border-radius:7px;color:#fff;font-size:14px;z-index:9999;display:none;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.modal p{font-size:14px;color:#555;margin-bottom:7px;line-height:1.6}
+.modal p b{color:#333}
+.modal textarea,.modal input,.modal select{width:100%;padding:9px 11px;border:1px solid #d9d9d9;border-radius:6px;font-size:14px;font-family:inherit;margin-bottom:10px}
+.modal textarea{min-height:100px;resize:vertical}
+.modal-btns{margin-top:16px;display:flex;gap:9px;flex-wrap:wrap}
+.toast{position:fixed;top:18px;right:18px;padding:10px 18px;border-radius:7px;color:#fff;font-size:14px;z-index:99999;display:none;box-shadow:0 4px 12px rgba(0,0,0,.2);max-width:280px}
 .toast.ok{background:#52c41a}
 .toast.err{background:#ff4d4f}
 .toast.tip{background:#1890ff}
-textarea{width:100%;padding:10px;border:1px solid #d9d9d9;border-radius:6px;font-size:14px;min-height:200px;resize:vertical;font-family:inherit}
-code{background:#f5f5f5;padding:2px 7px;border-radius:4px;font-size:12px;word-break:break-all}
+.small-tag{background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:12px;color:#666;margin-right:5px;display:inline-block;margin-bottom:3px}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.slider-wrap{display:flex;align-items:center;gap:10px}
+.slider-wrap input[type=range]{flex:1;cursor:pointer}
+.slider-val{background:#1890ff;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;min-width:30px;text-align:center}
+.search-bar{display:flex;gap:8px;margin-bottom:14px}
+.search-bar input{flex:1;padding:8px 12px;border:1px solid #d9d9d9;border-radius:6px;font-size:13px}
+.section-tabs{display:flex;gap:8px;margin-bottom:14px;border-bottom:1px solid #eee;padding-bottom:10px}
+.s-tab{padding:6px 14px;cursor:pointer;border-radius:6px;font-size:13px;border:none;background:#f5f5f5;color:#666}
+.s-tab.on{background:#1890ff;color:#fff}
+.info-row{display:flex;border-bottom:1px solid #f5f5f5;padding:8px 0;font-size:13px}
+.info-row .k{color:#888;width:80px;flex-shrink:0}
+.info-row .v{color:#333;flex:1;word-break:break-all}
 </style>
 </head>
 <body>
 
 <div class="sidebar">
   <div class="logo">🤖 AI分身管理<small>Personal AI Clone</small></div>
-  <div class="nav-item active" onclick="go('dashboard')">📊 数据看板</div>
-  <div class="nav-item" onclick="go('apikeys')">🔑 API审核</div>
-  <div class="nav-item" onclick="go('users')">👥 用户管理</div>
-  <div class="nav-item" onclick="go('clone')">🧠 分身管理</div>
+  <div class="nav">
+    <div class="nav-item active" onclick="go('dashboard',this)">📊 数据看板</div>
+    <div class="nav-item" onclick="go('apikeys',this)">🔑 API审核</div>
+    <div class="nav-item" onclick="go('clones',this)">🧠 分身管理</div>
+  </div>
 </div>
 
 <div class="content">
@@ -87,63 +109,94 @@ code{background:#f5f5f5;padding:2px 7px;border-radius:4px;font-size:12px;word-br
     </div>
     <div class="box">
       <h3>最近申请</h3>
+      <div style="overflow-x:auto">
       <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>状态</th></tr></thead>
       <tbody id="tb-recent"><tr><td colspan="5" class="loading">加载中...</td></tr></tbody></table>
+      </div>
     </div>
   </div>
 
   <!-- API审核 -->
   <div class="page" id="page-apikeys">
-    <div class="box">
-      <h3>⏳ 待审核申请</h3>
-      <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>操作</th></tr></thead>
-      <tbody id="tb-pending"><tr><td colspan="5" class="loading">加载中...</td></tr></tbody></table>
+    <div class="section-tabs">
+      <button class="s-tab on" onclick="switchApiTab('pending',this)">⏳ 待审核 (<span id="cnt-pending">0</span>)</button>
+      <button class="s-tab" onclick="switchApiTab('approved',this)">✅ 已通过 (<span id="cnt-approved">0</span>)</button>
+      <button class="s-tab" onclick="switchApiTab('rejected',this)">❌ 已拒绝 (<span id="cnt-rejected">0</span>)</button>
     </div>
-    <div class="box">
-      <h3>✅ 已通过的Key</h3>
-      <table><thead><tr><th>公司</th><th>联系人</th><th>API Key</th><th>限额/天</th><th>操作</th></tr></thead>
-      <tbody id="tb-approved"><tr><td colspan="5" class="loading">加载中...</td></tr></tbody></table>
-    </div>
-  </div>
 
-  <!-- 用户管理 -->
-  <div class="page" id="page-users">
-    <div class="box">
-      <table><thead><tr><th>公司</th><th>联系人</th><th>邮箱</th><th>电话</th><th>状态</th><th>操作</th></tr></thead>
-      <tbody id="tb-users"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
+    <div id="api-pending">
+      <div class="box">
+        <h3>⏳ 待审核申请</h3>
+        <div style="overflow-x:auto">
+        <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>简历摘要</th><th>操作</th></tr></thead>
+        <tbody id="tb-pending"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div id="api-approved" style="display:none">
+      <div class="box">
+        <h3>✅ 已通过的Key</h3>
+        <div style="overflow-x:auto">
+        <table><thead><tr><th>公司</th><th>联系人</th><th>Key</th><th>限额/天</th><th>通过时间</th><th>操作</th></tr></thead>
+        <tbody id="tb-approved"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div id="api-rejected" style="display:none">
+      <div class="box">
+        <h3>❌ 已拒绝的申请</h3>
+        <div style="overflow-x:auto">
+        <table><thead><tr><th>时间</th><th>公司</th><th>联系人</th><th>场景</th><th>拒绝原因</th><th>操作</th></tr></thead>
+        <tbody id="tb-rejected"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- 分身管理 -->
-  <div class="page" id="page-clone">
+  <div class="page" id="page-clones">
+    <div class="search-bar">
+      <input id="clone-search" placeholder="搜索分身名称、公司..." oninput="renderClones()">
+    </div>
     <div class="box">
-      <h3>🧠 System Prompt 设置</h3>
-      <textarea id="sp">你是用户的AI分身。
-
-【核心特征】
-- 思考方式：注重实操、结果导向
-- 决策框架：先分析问题，再给出解决方案
-- 表达风格：简洁、直接、不绕弯子
-
-【专长领域】
-- 互联网运营
-- 产品开发
-- AI应用</textarea>
-      <br><br>
-      <button class="btn btn-blue" onclick="savePrompt()">💾 保存</button>
+      <h3>🧠 已上传的分身列表</h3>
+      <div style="overflow-x:auto">
+      <table><thead><tr><th>分身信息</th><th>拥有人/公司</th><th>简历摘要</th><th>权重</th><th>雇佣次数</th><th>状态</th><th>操作</th></tr></thead>
+      <tbody id="tb-clones"><tr><td colspan="7" class="loading">加载中...</td></tr></tbody></table>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- 审核弹窗 -->
-<div class="modal-bg" id="modal">
+<div class="modal-bg" id="modal-review">
   <div class="modal">
-    <h3>审核申请</h3>
-    <div id="modal-body"></div>
+    <h3>🔍 审核申请</h3>
+    <div id="m-body"></div>
+    <div style="margin-top:12px">
+      <label style="font-size:13px;color:#666;display:block;margin-bottom:4px">拒绝原因（填写后点击拒绝）：</label>
+      <textarea id="reject-reason" placeholder="如：资料不全，请补充工作简历..."></textarea>
+    </div>
     <div class="modal-btns">
       <button class="btn btn-green" onclick="doReview('approved')">✅ 通过</button>
       <button class="btn btn-red" onclick="doReview('rejected')">❌ 拒绝</button>
       <button class="btn btn-gray" onclick="closeModal()">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- 分身编辑弹窗 -->
+<div class="modal-bg" id="modal-clone">
+  <div class="modal">
+    <h3 id="clone-modal-title">编辑分身</h3>
+    <input id="clone-name" placeholder="分身名称">
+    <textarea id="clone-desc" placeholder="分身描述"></textarea>
+    <input id="clone-tags" placeholder="标签（逗号分隔），如：运营,产品,AI">
+    <div class="modal-btns">
+      <button class="btn btn-blue" onclick="saveClone()">💾 保存</button>
+      <button class="btn btn-gray" onclick="closeCloneModal()">取消</button>
     </div>
   </div>
 </div>
@@ -156,9 +209,9 @@ const GT=['ghp_NGB6o2sk15hRqCHjBDGVB4At','hajD7Y2EObFv'].join('');
 const GIST_URL='https://api.github.com/gists/'+GIST_ID;
 const GH={'Authorization':'token '+GT,'Accept':'application/vnd.github.v3+json'};
 
-let data={applications:[]};
-let rid=null;
-const titles={'dashboard':'数据看板','apikeys':'API审核','users':'用户管理','clone':'分身管理'};
+let data={applications:[],clones:[]};
+let rid=null, editingCloneId=null;
+const titles={dashboard:'数据看板',apikeys:'API审核',clones:'分身管理'};
 
 function toast(msg,type='ok'){
   const t=document.getElementById('toast');
@@ -166,23 +219,34 @@ function toast(msg,type='ok'){
   setTimeout(()=>t.style.display='none',3000);
 }
 
-function go(page){
+function go(page,el){
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
-  event.currentTarget.classList.add('active');
+  if(el)el.classList.add('active');
   document.getElementById('page-'+page).classList.add('show');
   document.getElementById('title').textContent=titles[page];
   render();
+  if(page==='apikeys') switchApiTab('pending');
+}
+
+function switchApiTab(tab,el){
+  document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('on'));
+  if(el)el.classList.add('on');
+  document.getElementById('api-pending').style.display=tab==='pending'?'block':'none';
+  document.getElementById('api-approved').style.display=tab==='approved'?'block':'none';
+  document.getElementById('api-rejected').style.display=tab==='rejected'?'block':'none';
 }
 
 async function loadData(){
   try{
     const r=await fetch(GIST_URL,{headers:GH});
     const g=await r.json();
-    data=JSON.parse(g.files['data.json'].content);
+    const raw=JSON.parse(g.files['data.json'].content);
+    data.applications=raw.applications||[];
+    data.clones=raw.clones||[];
   }catch(e){
     const l=localStorage.getItem('acd');
-    if(l)data=JSON.parse(l);
+    if(l){const p=JSON.parse(l);data.applications=p.applications||[];data.clones=p.clones||[]}
   }
 }
 
@@ -194,82 +258,133 @@ async function saveData(){
   }catch(e){}
 }
 
-function sl(s){return s==='pending'?'⏳ 审核中':s==='approved'?'✅ 已通过':'❌ 已拒绝';}
-function fmt(ts){return new Date(ts).toLocaleString('zh-CN');}
+function sl(s){return s==='pending'?'⏳ 审核中':s==='approved'?'✅ 已通过':s==='rejected'?'❌ 已拒绝':s}
+function fmt(ts){return new Date(ts).toLocaleString('zh-CN')}
 
 function render(){
   const apps=data.applications||[];
   const pending=apps.filter(a=>a.status==='pending');
   const approved=apps.filter(a=>a.status==='approved');
   const rejected=apps.filter(a=>a.status==='rejected');
-
-  // 看板数字
   document.getElementById('n-pending').textContent=pending.length;
   document.getElementById('n-approved').textContent=approved.length;
   document.getElementById('n-rejected').textContent=rejected.length;
   document.getElementById('n-total').textContent=apps.length;
+  document.getElementById('cnt-pending').textContent=pending.length;
+  document.getElementById('cnt-approved').textContent=approved.length;
+  document.getElementById('cnt-rejected').textContent=rejected.length;
 
   // 最近申请
   const tr=document.getElementById('tb-recent');
   tr.innerHTML=apps.length===0?'<tr><td colspan="5" class="empty">暂无申请</td></tr>':
     [...apps].reverse().slice(0,10).map(a=>`<tr>
-      <td>${fmt(a.timestamp)}</td><td>${a.companyName}</td><td>${a.contactName}</td>
-      <td>${a.useCase}</td><td><span class="tag ${a.status}">${sl(a.status)}</span></td>
+      <td style="white-space:nowrap">${fmt(a.timestamp)}</td>
+      <td>${a.companyName}</td><td>${a.contactName}</td><td>${a.useCase}</td>
+      <td><span class="tag ${a.status}">${sl(a.status)}</span></td>
     </tr>`).join('');
 
   // 待审核
   const tp=document.getElementById('tb-pending');
-  tp.innerHTML=pending.length===0?'<tr><td colspan="5" class="empty">暂无待审核 🎉</td></tr>':
+  tp.innerHTML=pending.length===0?'<tr><td colspan="6" class="empty">暂无待审核 🎉</td></tr>':
     pending.map(a=>`<tr>
-      <td>${fmt(a.timestamp)}</td><td>${a.companyName}</td><td>${a.contactName}</td>
-      <td>${a.useCase}</td>
-      <td><button class="btn btn-blue" onclick="openModal('${a.id}')">审核</button></td>
+      <td style="white-space:nowrap">${fmt(a.timestamp)}</td>
+      <td>${a.companyName}</td><td>${a.contactName}</td><td>${a.useCase}</td>
+      <td style="max-width:140px;font-size:12px;color:#888">${a.resume?(a.resume.length>30?a.resume.substr(0,30)+'...':a.resume):'<span style="color:#ccc">无</span>'}</td>
+      <td><button class="btn btn-blue" onclick="openReview('${a.id}')">审核</button></td>
     </tr>`).join('');
 
   // 已通过
   const ta=document.getElementById('tb-approved');
-  ta.innerHTML=approved.length===0?'<tr><td colspan="5" class="empty">暂无已通过申请</td></tr>':
+  ta.innerHTML=approved.length===0?'<tr><td colspan="6" class="empty">暂无已通过</td></tr>':
     approved.map(a=>`<tr>
       <td>${a.companyName}</td><td>${a.contactName}</td>
-      <td><code>${a.apiKey}</code></td><td>${a.callVolume}</td>
+      <td><code style="font-size:11px">${a.apiKey}</code></td>
+      <td>${a.callVolume}</td>
+      <td style="white-space:nowrap">${a.reviewedAt?fmt(a.reviewedAt):'-'}</td>
       <td><button class="btn btn-red" onclick="revoke('${a.id}')">停用</button></td>
     </tr>`).join('');
 
-  // 用户列表
-  const tu=document.getElementById('tb-users');
-  tu.innerHTML=apps.length===0?'<tr><td colspan="6" class="empty">暂无用户</td></tr>':
-    [...apps].reverse().map(a=>`<tr>
-      <td>${a.companyName}</td><td>${a.contactName}</td>
-      <td>${a.email}</td><td>${a.phone}</td>
-      <td><span class="tag ${a.status}">${sl(a.status)}</span></td>
-      <td><button class="btn btn-red" onclick="del('${a.id}')">删除</button></td>
+  // 已拒绝
+  const trej=document.getElementById('tb-rejected');
+  trej.innerHTML=rejected.length===0?'<tr><td colspan="6" class="empty">暂无已拒绝的记录</td></tr>':
+    rejected.map(a=>`<tr>
+      <td style="white-space:nowrap">${fmt(a.timestamp)}</td>
+      <td>${a.companyName}</td><td>${a.contactName}</td><td>${a.useCase}</td>
+      <td style="max-width:160px;font-size:12px;color:#ff4d4f">${a.rejectReason||'<span style="color:#ccc">未填写</span>'}</td>
+      <td><button class="btn btn-green" onclick="reApprove('${a.id}')">重新通过</button></td>
+    </tr>`).join('');
+
+  renderClones();
+}
+
+function renderClones(){
+  const kw=(document.getElementById('clone-search')||{value:''}).value.toLowerCase();
+  const clones=data.clones||[];
+  const filtered=clones.filter(c=>
+    !kw||(c.name||'').toLowerCase().includes(kw)||(c.companyName||'').toLowerCase().includes(kw)||(c.tags||'').toLowerCase().includes(kw)
+  );
+  const tb=document.getElementById('tb-clones');
+  if(clones.length===0){
+    tb.innerHTML='<tr><td colspan="7" class="empty">暂无分身数据<br><small style="color:#ccc">用户上传分身后将显示在这里</small></td></tr>';return;
+  }
+  tb.innerHTML=filtered.length===0?'<tr><td colspan="7" class="empty">没有找到匹配的分身</td></tr>':
+    filtered.map(c=>`<tr>
+      <td>
+        <div style="font-weight:600">${c.name||'未命名'}</div>
+        <div style="font-size:12px;color:#888">${(c.description||'').substr(0,40)}${(c.description||'').length>40?'...':''}</div>
+      </td>
+      <td>${c.companyName||'-'}</td>
+      <td style="max-width:140px;font-size:12px;color:#666">${(c.resume||'').substr(0,30)}${(c.resume||'').length>30?'...':''}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input type="range" min="0" max="100" value="${c.weight||50}" 
+            style="width:60px" onchange="setWeight('${c.id}',this.value)">
+          <span style="background:#1890ff;color:#fff;padding:1px 6px;border-radius:3px;font-size:11px">${c.weight||50}</span>
+        </div>
+      </td>
+      <td><b>${c.hireCount||0}</b> 次</td>
+      <td><span class="tag ${c.status==='active'?'active':'inactive'}">${c.status==='active'?'展示中':'已下架'}</span></td>
+      <td>
+        <div style="display:flex;gap:4px;flex-wrap:wrap">
+          <button class="btn btn-blue" onclick="editClone('${c.id}')" style="padding:3px 8px;font-size:11px">编辑</button>
+          <button class="btn btn-orange" onclick="toggleCloneStatus('${c.id}')" style="padding:3px 8px;font-size:11px">${c.status==='active'?'下架':'上架'}</button>
+          <button class="btn btn-red" onclick="delClone('${c.id}')" style="padding:3px 8px;font-size:11px">删除</button>
+        </div>
+      </td>
     </tr>`).join('');
 }
 
-function openModal(id){
+function openReview(id){
   rid=id;
   const a=data.applications.find(x=>x.id===id);
   if(!a)return;
-  document.getElementById('modal-body').innerHTML=`
-    <p><b>公司：</b>${a.companyName}</p>
-    <p><b>联系人：</b>${a.contactName}</p>
-    <p><b>邮箱：</b>${a.email}</p>
-    <p><b>电话：</b>${a.phone}</p>
-    <p><b>场景：</b>${a.useCase}</p>
-    <p><b>描述：</b>${a.description||'无'}</p>
-    <p><b>调用量：</b>${a.callVolume}/天</p>
-    <p><b>时间：</b>${fmt(a.timestamp)}</p>`;
-  document.getElementById('modal').classList.add('open');
+  document.getElementById('m-body').innerHTML=`
+    <div class="info-row"><div class="k">公司</div><div class="v">${a.companyName}</div></div>
+    <div class="info-row"><div class="k">联系人</div><div class="v">${a.contactName}</div></div>
+    <div class="info-row"><div class="k">邮箱</div><div class="v">${a.email}</div></div>
+    <div class="info-row"><div class="k">电话</div><div class="v">${a.phone}</div></div>
+    <div class="info-row"><div class="k">场景</div><div class="v">${a.useCase}</div></div>
+    <div class="info-row"><div class="k">调用量</div><div class="v">${a.callVolume}/天</div></div>
+    ${a.resume?`<div class="info-row"><div class="k">简历</div><div class="v" style="white-space:pre-wrap;max-height:150px;overflow-y:auto">${a.resume}</div></div>`:''}
+    ${a.description?`<div class="info-row"><div class="k">描述</div><div class="v">${a.description}</div></div>`:''}
+    <div class="info-row"><div class="k">申请时间</div><div class="v">${fmt(a.timestamp)}</div></div>`;
+  document.getElementById('reject-reason').value='';
+  document.getElementById('modal-review').classList.add('open');
 }
 
-function closeModal(){document.getElementById('modal').classList.remove('open');rid=null;}
+function closeModal(){document.getElementById('modal-review').classList.remove('open');rid=null;}
 
 async function doReview(status){
   if(!rid)return;
   const a=data.applications.find(x=>x.id===rid);
   if(!a)return;
-  a.status=status; a.reviewedAt=new Date().toISOString();
-  closeModal(); toast('保存中...','tip');
+  a.status=status;
+  a.reviewedAt=new Date().toISOString();
+  if(status==='rejected'){
+    a.rejectReason=document.getElementById('reject-reason').value||'资料不符合要求，请修改后重新提交';
+  }
+  closeModal();
+  toast('保存中...','tip');
   await saveData();
   toast(status==='approved'?'✅ 已通过！':'❌ 已拒绝！');
   render();
@@ -279,20 +394,65 @@ async function revoke(id){
   if(!confirm('确认停用此Key？'))return;
   const a=data.applications.find(x=>x.id===id);
   if(!a)return;
-  a.status='rejected'; toast('保存中...','tip');
+  a.status='rejected'; a.rejectReason='管理员手动停用';
+  toast('停用中...','tip');
   await saveData(); toast('Key已停用'); render();
 }
 
-async function del(id){
-  if(!confirm('确认删除此用户？'))return;
-  data.applications=data.applications.filter(x=>x.id!==id);
-  toast('保存中...','tip');
-  await saveData(); toast('已删除'); render();
+async function reApprove(id){
+  const a=data.applications.find(x=>x.id===id);
+  if(!a)return;
+  a.status='approved'; a.reviewedAt=new Date().toISOString();
+  a.rejectReason='';
+  toast('重新通过中...','tip');
+  await saveData(); toast('✅ 已重新通过！'); render();
 }
 
-function savePrompt(){
-  localStorage.setItem('sp',document.getElementById('sp').value);
-  toast('✅ System Prompt已保存！');
+function editClone(id){
+  const c=data.clones.find(x=>x.id===id);
+  if(!c)return;
+  editingCloneId=id;
+  document.getElementById('clone-modal-title').textContent='编辑分身：'+(c.name||'');
+  document.getElementById('clone-name').value=c.name||'';
+  document.getElementById('clone-desc').value=c.description||'';
+  document.getElementById('clone-tags').value=(c.tags||[]).join(',');
+  document.getElementById('modal-clone').classList.add('open');
+}
+
+function closeCloneModal(){document.getElementById('modal-clone').classList.remove('open');editingCloneId=null;}
+
+async function saveClone(){
+  if(!editingCloneId)return;
+  const c=data.clones.find(x=>x.id===editingCloneId);
+  if(!c)return;
+  c.name=document.getElementById('clone-name').value;
+  c.description=document.getElementById('clone-desc').value;
+  c.tags=document.getElementById('clone-tags').value.split(',').map(t=>t.trim()).filter(t=>t);
+  closeCloneModal();
+  toast('保存中...','tip');
+  await saveData(); toast('✅ 分身信息已保存！'); render();
+}
+
+async function setWeight(id,val){
+  const c=data.clones.find(x=>x.id===id);
+  if(!c)return;
+  c.weight=parseInt(val);
+  await saveData();
+}
+
+async function toggleCloneStatus(id){
+  const c=data.clones.find(x=>x.id===id);
+  if(!c)return;
+  c.status=c.status==='active'?'inactive':'active';
+  await saveData(); render();
+  toast(c.status==='active'?'✅ 已上架':'⏸ 已下架');
+}
+
+async function delClone(id){
+  if(!confirm('确认删除此分身？此操作不可恢复！'))return;
+  data.clones=data.clones.filter(x=>x.id!==id);
+  toast('删除中...','tip');
+  await saveData(); toast('分身已删除'); render();
 }
 
 async function refresh(){
@@ -301,10 +461,8 @@ async function refresh(){
   toast('✅ 已刷新！');
 }
 
-const sp=localStorage.getItem('sp');
-if(sp)document.getElementById('sp').value=sp;
-
-loadData().then(render);
+// Init
+loadData().then(()=>{render();switchApiTab('pending')});
 </script>
 </body>
 </html>
